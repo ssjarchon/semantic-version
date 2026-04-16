@@ -550,7 +550,7 @@ export class SemanticVersion<
 					this._prerelease = parsed.data.prerelease;
 					this._build = parsed.data.build;
 				} else {
-					throw new Error(parsed.error.errors.map((e) => e.message).join("\n"));
+					throw new Error(parsed.error.issues.map((e) => e.message).join("\n"));
 				}
 			} else {
 				throw new Error("Invalid Semantic Version String");
@@ -573,7 +573,7 @@ export class SemanticVersion<
 				this._complianceSettings =
 					parsed.data.complianceSettings ?? SemanticVersion._complianceSettings;
 			} else {
-				throw new Error(parsed.error.errors.map((e) => e.message).join("\n"));
+				throw new Error(parsed.error.issues.map((e) => e.message).join("\n"));
 			}
 		} else if (initializer === null || initializer === undefined) {
 			this._branch = undefined;
